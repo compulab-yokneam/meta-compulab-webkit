@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+T="../sources/meta-compulab-webkit/templates"
+
+for _d in ${T}/*;do
+	_file=$(basename ${_d})
+	for _f in ${_d}/*;do
+		cat ${_f} >> conf/${_file}
+	done;
+done

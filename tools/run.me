@@ -1,0 +1,30 @@
+#!/bin/bash -e
+
+function builddir_is_bad() {
+cat << eof
+    Build dir is not set ....
+eof
+    return 0;
+}
+
+function builddir_is_good() {
+
+    local BSP_DIR=${BUILDDIR}/../
+
+    if [ ! -d ${BSP_DIR}/.repo ];then
+        echo -t "\t.repo not found at ${BSP_DIR}/.repo ..."
+        return
+    fi
+
+    if [[ -f ${BSP_DIR}/.repo/local_manifests/meta-compulab-webkit.xml ]];then
+        echo -t "\tAllready in .."
+        return
+    fi
+
+    wget --directory-prefix ${BSP_DIR}/.repo/local_manifests https://raw.githubusercontent.com/compulab-yokneam/meta-compulab-webkit/master/scripts/meta-compulab-webkit.xml
+    repo sync
+    source ${BUILDDIR}/../sources/meta-compulab-webkit/tools/setup-env
+
+}
+
+[[ -n ${BUILDDIR:-""} ]] && BUILDDIR=${BUILDDIR} builddir_is_good || builddir_is_bad

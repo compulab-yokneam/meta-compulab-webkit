@@ -1,0 +1,2 @@
+BBLAYERS += "${BSPDIR}/sources/meta-webkit"
+BBLAYERS += "${BSPDIR}/sources/meta-compulab-webkit"

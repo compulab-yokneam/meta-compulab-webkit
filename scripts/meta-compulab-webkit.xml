@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <manifest>
+
+  <remote fetch="https://github.com/compulab-yokneam" name="compulab"/>
+  <project name="meta-compulab-webkit" remote="compulab" revision="master" path="sources/meta-compulab-webkit"/>
+
+  <remote fetch="https://github.com/Igalia" name="igalia"/>
+  <project name="meta-webkit" remote="igalia" revision="master" path="sources/meta-webkit"/>
+
+  </manifest>
